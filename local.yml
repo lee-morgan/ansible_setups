@@ -6,4 +6,6 @@
   tasks:
   - name: install packages
     package: 
-      name: htop
+      name: 
+        - htop
+        - neofetch
