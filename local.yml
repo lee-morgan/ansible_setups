@@ -29,3 +29,10 @@
       key: "/org/gnome/desktop/background/picture-options"
       value: "'zoom'"
 
+  - name: copy .bashrc file
+    copy:
+      src: files/bashrc
+      dest: /home/jay/.bashrc
+      owner: lee
+      group: lee
+
