@@ -21,7 +21,7 @@
     become_user: lee
     dconf:
       key: "/org/gnome/desktop/background/picture-uri"
-      value: "'file:///usr/share/backgrounds/ansible-wallpaper.png'"
+      value: "'file:///usr/share/backgrounds/ansible-wallpaper.jpg'"
 
   - name: set wallpaper position
     become_user: lee
@@ -32,7 +32,7 @@
   - name: copy .bashrc file
     copy:
       src: files/bashrc
-      dest: /home/jay/.bashrc
+      dest: /home/lee/.bashrc
       owner: lee
       group: lee
 
@@ -53,6 +53,6 @@
     cron:
       name: ansible auto-provision
       user: sysadm
-      minute: "*/30"
+      minute: "*/5"
       job: ansible-pull -o -U https://github.com/lee-morgan/ansible_setups.git
 
