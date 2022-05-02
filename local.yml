@@ -10,6 +10,8 @@
         - htop
         - neofetch
         - python3-psutil
+      update_cache: yes
+
   - name: copy wallpaper file
     copy:
       src: files/wallpaper.jpg
