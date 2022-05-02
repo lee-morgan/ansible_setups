@@ -5,13 +5,13 @@
 
   tasks:
   - name: install packages
-    package: 
-      name: 
+    package:
+      name:
         - htop
         - neofetch
         - python3-psutil
   - name: copy wallpaper file
-    copy: 
+    copy:
       src: files/wallpaper.png
       dest: /usr/share/backgrounds/ansible-wallpaper.png
       owner: root
@@ -25,7 +25,7 @@
 
   - name: set wallpaper position
     become_user: lee
-    dconf: 
+    dconf:
       key: "/org/gnome/desktop/background/picture-options"
       value: "'zoom'"
 
@@ -35,4 +35,24 @@
       dest: /home/jay/.bashrc
       owner: lee
       group: lee
+
+  - name: add ansible user
+    user:
+      name: sysadm
+      system: yes
+
+  - name: setup sudo for ansible user
+    copy:
+      src: files/sudoer_sysadm
+      dest: /etc/sudoers.d/sysadm
+      owner: root
+      group: root
+      mode: 0440
+
+  - name: add ansible-pull cron job
+    cron:
+      name: ansible auto-provision
+      user: sysadm
+      minute: "*/30"
+      job: ansible-pull -o -U https://github.com/lee-morgan/ansible_setups.git
 
