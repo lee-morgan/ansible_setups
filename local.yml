@@ -19,23 +19,29 @@
 
   - name: copy wallpaper file
     copy:
-      src: files/wallpaper.jpg
-      dest: /usr/share/backgrounds/ansible-wallpaper.jpg
+      src: files/wallpaper.png
+      dest: /usr/share/backgrounds/ansible-wallpaper.png
       owner: root
       group: root
-      mode: 600
-      
+
   - name: set wallpaper
     become_user: lee
     dconf:
       key: "/org/gnome/desktop/background/picture-uri"
-      value: "'file:///usr/share/backgrounds/ansible-wallpaper.jpg'"
+      value: "'file:///usr/share/backgrounds/ansible-wallpaper.png'"
 
   - name: set wallpaper position
     become_user: lee
     dconf:
       key: "/org/gnome/desktop/background/picture-options"
       value: "'zoom'"
+
+  - name: copy .bashrc file
+    copy:
+     src: files/bashrc
+     dest: /home/jay/.bashrc
+     owner: jay
+     group: jay
 
   - name: copy .bashrc file
     copy:
