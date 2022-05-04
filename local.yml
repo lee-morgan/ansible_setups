@@ -2,15 +2,20 @@
 - hosts: localhost
   connection: local
   become: true
-
   tasks:
+
+  - name: install updates
+    apt:
+      update_cache: yes
+      upgrade: dist
+    when: ansible_distribution in ["ubuntu", "debian"]
+
   - name: install packages
     package:
       name:
         - htop
         - neofetch
         - python3-psutil
-      update_cache: yes
 
   - name: copy wallpaper file
     copy:
