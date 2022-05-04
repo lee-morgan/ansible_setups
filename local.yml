@@ -40,8 +40,8 @@
     copy:
      src: files/bashrc
      dest: /home/jay/.bashrc
-     owner: jay
-     group: jay
+     owner: lee
+     group: lee
 
   - name: copy .bashrc file
     copy:
