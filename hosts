@@ -1,0 +1,8 @@
+[workstations]
+acer-laptop.local
+
+[servers]
+acer-server.local
+
+[pi]
+pi-hole.local
