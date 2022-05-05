@@ -2,13 +2,23 @@
 - hosts: localhost
   connection: local
   become: true
-  tasks:
 
-  - name: install updates
-    apt:
-      update_cache: yes
-      upgrade: dist
-    when: ansible_distribution in ["ubuntu", "debian"]
+  pre-tasks:
+
+    - name: install updates
+      apt:
+        update_cache: yes
+        upgrade: dist
+      when: ansible_distribution in ["ubuntu", "debian"]
+      changed_when: False
+
+  tasks:
+    - include: tasks/packages.yml
+    - include: tasks/users.yml
+    - include: tasks/appearance.yml
+    - include: tasks/configs.yml
+    - include: tasks/provisioning.yml
+
 
   - name: install packages
     package:
