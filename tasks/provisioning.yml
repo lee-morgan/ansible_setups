@@ -3,4 +3,4 @@
     name: ansible auto-provision
     user: sysadm
     minute: "*/15"
-    job: sudo /usr/bin/ansible-pull -o -U https://github.com/lee-morgan/ansible_setups.git
+    job: sudo /usr/bin/ansible-pull -o -U https://github.com/lee-morgan/ansible_setups.git > /var/log/ansible_cron.log
