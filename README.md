@@ -1,4 +1,4 @@
-# ansible_setups
+# Ansible Setups
 Ansible configurations for workstations
 
 Ansible repo
