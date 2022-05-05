@@ -1,0 +1,12 @@
+- name: add ansible user
+  user:
+    name: sysadm
+    system: yes
+
+- name: setup sudo for ansible user
+  copy:
+    src: files/sudoer_sysadm
+    dest: /etc/sudoers.d/sysadm
+    owner: root
+    group: root
+    mode: 0440
